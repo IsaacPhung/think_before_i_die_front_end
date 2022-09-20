@@ -9,10 +9,14 @@ export default function Input({
 }) {
   return (
     <>
-      <div className="flex flex-col pb-5">
-        {label && <label htmlFor={id}>{label}</label>}
+      <div className="flex flex-col mb-5">
+        {label && (
+          <label className="mb-2 font-bold" htmlFor={id}>
+            {label}
+          </label>
+        )}
         <input
-          className={`border rounded ${className}`}
+          className={`border rounded ${className} mb-2`}
           type={type}
           id={id}
           onChange={onChange}

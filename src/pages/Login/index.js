@@ -13,6 +13,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const { isLoggedIn } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.message);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -32,6 +33,7 @@ export default function Login() {
             id="username"
             label="Username"
             onChange={(e) => setUsername(e.target.value)}
+            error={message && message}
           />
           <Input
             className="border-blue-500"
