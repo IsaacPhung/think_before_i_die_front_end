@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../features/auth/authSlice";
+import { login } from "../../features/auth/authThunk";
 import { useNavigate } from "react-router-dom";
+import { clearMessage } from "../../features/message/messageSlice";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -20,6 +21,10 @@ export default function Login() {
       navigate("/");
     }
   }, [navigate, isLoggedIn]);
+
+  useEffect(() => {
+    dispatch(clearMessage());
+  }, [dispatch]);
 
   const handleOnPressLogin = () => {
     dispatch(login({ username, password }));
